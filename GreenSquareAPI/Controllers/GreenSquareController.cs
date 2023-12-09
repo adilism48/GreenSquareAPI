@@ -62,7 +62,7 @@ namespace GreenSquareAPI.Controllers
 
         [HttpPost]
         [Route("AddProduct")]
-        public JsonResult AddProduct([FromForm] int category, string product_name, string price)
+        public JsonResult AddProduct([FromForm] int category, [FromForm] string product_name, [FromForm] string price)
         {
             string query = "insert into dbo.products(category, product_name, price) values(@0, @1, @2)";
             DataTable table = new DataTable();
@@ -87,7 +87,7 @@ namespace GreenSquareAPI.Controllers
 
         [HttpDelete]
         [Route("DeleteProduct")]
-        public JsonResult DeleteProduct(int id)
+        public JsonResult DeleteProduct([FromForm] int id)
         {
             string query = "delete from dbo.products where id=@id";
             DataTable table = new DataTable();
@@ -106,6 +106,32 @@ namespace GreenSquareAPI.Controllers
                 }
             }
             return new JsonResult("Deleted Successfuly");
+        }
+
+        [HttpPatch]
+        [Route("UpdateProduct")]
+        public JsonResult UpdateProduct([FromForm] int category, [FromForm] string product_name, [FromForm] string price, int id)
+        {
+            string query = "update dbo.products set category=@1, product_name=@2, price=@3 where id=@0";
+            DataTable table = new DataTable();
+            string sqlDatasource = _configuration.GetConnectionString("greenSquareDBCon");
+            SqlDataReader myReader;
+            using (SqlConnection myConn = new SqlConnection(sqlDatasource))
+            {
+                myConn.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myConn))
+                {
+                    myCommand.Parameters.AddWithValue("@1", category);
+                    myCommand.Parameters.AddWithValue("@2", product_name);
+                    myCommand.Parameters.AddWithValue("@3", price);
+                    myCommand.Parameters.AddWithValue("@0", id);
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+                    myReader.Close();
+                    myConn.Close();
+                }
+            }
+            return new JsonResult("Updated Successfuly");
         }
     }
 }
