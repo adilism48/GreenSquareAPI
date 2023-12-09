@@ -107,7 +107,5 @@ namespace GreenSquareAPI.Controllers
             }
             return new JsonResult("Deleted Successfuly");
         }
-
-        //Test 2
     }
 }
