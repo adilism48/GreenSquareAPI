@@ -8,9 +8,9 @@ GreenSquare API on asp.net core api for [GreenSquare Front-end]
 https://youtu.be/F_480D1Zvec
 
 ## Tech
-ASP.NET Framework (.NET ver 8)
-Newtonsoft.JSON 8.0.0
-MS-SQL database(works on Azure cloud)
+- ASP.NET Framework (.NET ver 8)
+- Newtonsoft.JSON 8.0.0
+- MS-SQL database(works on Azure cloud)
 
 ## Run
 
