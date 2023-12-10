@@ -17,4 +17,4 @@ MS-SQL database(works on Azure cloud)
 
 [//]: #
 [GreenSquare API]: https://github.com/adilism48/GreenSquareAPI
-[GreenSquare Fron-end]: https://github.com/adilism48/green-square-front
+[GreenSquare Front-end]: https://github.com/adilism48/green-square-front
