@@ -13,7 +13,7 @@ https://youtu.be/F_480D1Zvec
 - MS-SQL database(works on Azure cloud)
 
 ## Run
-
+You do not need to connect a local database to run it, it works online in a cloud
 
 [//]: #
 [GreenSquare API]: https://github.com/adilism48/GreenSquareAPI
